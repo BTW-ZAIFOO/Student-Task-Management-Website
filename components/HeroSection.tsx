@@ -20,15 +20,14 @@ export default function HeroSection() {
               </span>
             </div>
 
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
-              Organize Your Entire Academic Life—From{' '}
-              <span className="gradient-text">Class 1 to PhD</span>
+            <h1 className="text-5xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
+              From ABCs to PhDs{' '}
+              <span className="gradient-text">StudentSphere</span>{' '}
+              Keeps Your Academic Chaos Under Control
             </h1>
 
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              A powerful academic management system that helps students track
-              subjects, assignments, exams, attendance, and progress—all in one
-              intelligent dashboard.
+              The ultimate student hub to track, manage, and level up your academic life, all in one dashboard.
             </p>
 
             {/* CTA Buttons */}
