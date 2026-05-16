@@ -27,7 +27,7 @@ export default function TestimonialsSection() {
 
   return (
     <section id="testimonials" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50/30 to-transparent">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <SectionHeader
           title="What Students Say About StudentSphere"
           subtitle="Real feedback from students achieving real academic success"

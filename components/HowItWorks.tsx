@@ -51,7 +51,7 @@ export default function HowItWorks() {
 
   return (
     <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <SectionHeader
           title="Get Started in Minutes"
           subtitle="Simple, intuitive onboarding process designed for students"

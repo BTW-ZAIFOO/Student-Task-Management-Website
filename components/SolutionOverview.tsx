@@ -27,7 +27,7 @@ export default function SolutionOverview() {
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50/30 to-transparent">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <SectionHeader
           title="A Unified System for Academic Success"
           subtitle="StudentSphere transforms scattered chaos into organized, manageable structure."

@@ -9,7 +9,7 @@ export default function HeroSection() {
       <div className="absolute top-20 right-10 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" />
       <div className="absolute bottom-10 left-10 w-72 h-72 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style={{ animationDelay: '2s' }} />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="animate-fade-in-up">

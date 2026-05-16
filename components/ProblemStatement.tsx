@@ -45,7 +45,7 @@ export default function ProblemStatement() {
 
   return (
     <section id="problems" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <SectionHeader
           title="The Problem Every Student Faces"
           subtitle="Academic life shouldn't mean managing chaos. We understand the pain points."

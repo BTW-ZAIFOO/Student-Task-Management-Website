@@ -55,7 +55,7 @@ export default function FeaturesSection() {
 
   return (
     <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <SectionHeader
           title="Everything You Need to Stay Academically Organized"
           subtitle="Comprehensive tools designed for academic success at every level"
