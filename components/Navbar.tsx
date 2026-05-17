@@ -17,11 +17,12 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: 'Features', href: '#features' },
-    { label: 'Academic Levels', href: '#levels' },
-    { label: 'How It Works', href: '#how-it-works' },
-    { label: 'Dashboard', href: '#dashboard' },
-    { label: 'Testimonials', href: '#testimonials' },
+    { label: 'Features', href: '/features' },
+    { label: 'Academic Levels', href: '/academic-levels' },
+    { label: 'How It Works', href: '/how-it-works' },
+    { label: 'Dashboard', href: '/dashboard-preview' },
+    { label: 'Testimonials', href: '/testimonials' },
+    { label: 'Pricing', href: '/pricing' },
   ];
 
   return (
@@ -49,24 +50,24 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-smooth"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
           {/* Right Actions */}
           <div className="hidden md:flex items-center gap-3">
-            <button className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-smooth">
+            <Link href="/login" className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-smooth">
               Login
-            </button>
-            <button className="px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-smooth shadow-md">
+            </Link>
+            <Link href="/signup" className="px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-smooth shadow-md">
               Get Started
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -97,14 +98,14 @@ export default function Navbar() {
           <div className="md:hidden bg-white border-b border-gray-200 py-4 animate-fade-in">
             <div className="flex flex-col gap-3">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   className="px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600 rounded transition-smooth"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <div className="px-4 py-2 flex flex-col gap-2">
                 <button className="w-full px-4 py-2 text-sm font-medium text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50">
