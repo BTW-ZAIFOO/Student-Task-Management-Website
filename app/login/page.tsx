@@ -41,10 +41,17 @@ export default function LoginPage() {
 
     // Simulate submission
     setTimeout(() => {
+      // Store student session in localStorage
+      const studentId = 'STU-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+      localStorage.setItem('studentId', studentId);
+      localStorage.setItem('studentEmail', formData.email);
+      localStorage.setItem('studentName', formData.email.split('@')[0]);
+      localStorage.setItem('academicLevel', 'University');
+      
       saveFormSubmission('login', { email: formData.email, password: formData.password });
       setSuccess(true);
       setIsLoading(false);
-      setTimeout(() => window.location.href = '/dashboard-preview', 2000);
+      setTimeout(() => window.location.href = '/dashboard', 2000);
     }, 800);
   };
 

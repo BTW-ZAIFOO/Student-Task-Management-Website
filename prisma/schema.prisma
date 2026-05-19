@@ -1,0 +1,139 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// Student Model
+model Student {
+  id            String   @id @default(cuid())
+  name          String
+  email         String   @unique
+  password      String
+  academicLevel String   // Primary, Secondary, Higher Secondary, College, University, Doctorate
+  enrollDate    DateTime @default(now())
+  avatar        String?
+  
+  // Relationships
+  tasks         Task[]
+  subjects      Subject[]
+  exams         Exam[]
+  attendance    Attendance[]
+  notes         Note[]
+  grades        Grade[]
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// Task/Assignment Model
+model Task {
+  id            String   @id @default(cuid())
+  studentId     String
+  student       Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  
+  title         String
+  description   String?
+  dueDate       DateTime
+  subjectId     String?
+  subject       Subject? @relation(fields: [subjectId], references: [id], onDelete: SetNull)
+  
+  status        String   @default("pending") // pending, in-progress, completed
+  priority      String   @default("medium") // low, medium, high
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// Subject Model
+model Subject {
+  id            String   @id @default(cuid())
+  studentId     String
+  student       Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  
+  name          String
+  code          String?
+  instructor    String?
+  credits       Int?
+  
+  tasks         Task[]
+  attendance    Attendance[]
+  exams         Exam[]
+  notes         Note[]
+  grades        Grade[]
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// Exam Model
+model Exam {
+  id            String   @id @default(cuid())
+  studentId     String
+  student       Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  subjectId     String
+  subject       Subject  @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  
+  title         String
+  date          DateTime
+  duration      Int?     // in minutes
+  marks         Float?
+  maxMarks      Float?
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// Attendance Model
+model Attendance {
+  id            String   @id @default(cuid())
+  studentId     String
+  student       Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  subjectId     String
+  subject       Subject  @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  
+  date          DateTime
+  present       Boolean  @default(false)
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// Notes Model
+model Note {
+  id            String   @id @default(cuid())
+  studentId     String
+  student       Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  subjectId     String
+  subject       Subject  @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  
+  title         String
+  content       String
+  fileUrl       String?
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// Grade Model
+model Grade {
+  id            String   @id @default(cuid())
+  studentId     String
+  student       Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  subjectId     String
+  subject       Subject  @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  
+  assignment    String
+  marks         Float
+  maxMarks      Float
+  percentage    Float
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
