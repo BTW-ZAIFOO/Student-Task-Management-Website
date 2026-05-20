@@ -37,7 +37,7 @@ export default function About() {
         </div>
 
         {/* Mission */}
-        <div className="max-w-4xl mx-auto mb-16 p-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-100">
+        <div className="max-w-4xl mx-auto mb-16 p-8 bg-linear-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-100">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
           <p className="text-lg text-gray-700 leading-relaxed">
             StudentSphere was founded with one goal: to help students organize
@@ -100,7 +100,7 @@ export default function About() {
         <div className="max-w-4xl mx-auto text-center">
           <a
             href="/signup"
-            className="inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-semibold hover:shadow-lg transition-smooth"
+            className="inline-block px-8 py-3 bg-linear-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-semibold hover:shadow-lg transition-smooth"
           >
             Join Us Today
           </a>

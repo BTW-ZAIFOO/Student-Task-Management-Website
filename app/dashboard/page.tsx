@@ -605,7 +605,7 @@ export default function Dashboard() {
                 {subjects.map((subject) => (
                   <div
                     key={subject.id}
-                    className="p-3 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-lg border border-emerald-200 dark:border-emerald-800"
+                    className="p-3 bg-linear-to-br from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-lg border border-emerald-200 dark:border-emerald-800"
                   >
                     <p className="text-sm font-semibold text-gray-900 dark:text-white">
                       {subject.name}

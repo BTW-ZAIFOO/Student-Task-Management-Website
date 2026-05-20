@@ -145,7 +145,7 @@ export default function GradesPage() {
                         <div className="flex-1">
                           <div className="w-full bg-gray-300 dark:bg-slate-700 rounded-full h-2">
                             <div
-                              className={`h-2 rounded-full bg-gradient-to-r ${colors.bar} transition-all`}
+                              className={`h-2 rounded-full bg-linear-to-r ${colors.bar} transition-all`}
                               style={{ width: `${sg.average}%` }}
                             />
                           </div>
@@ -255,12 +255,12 @@ export default function GradesPage() {
                         <div className="flex-1">
                           <div className="w-full bg-gray-300 dark:bg-slate-700 rounded-full h-2">
                             <div
-                              className={`h-2 rounded-full bg-gradient-to-r ${colors.bar} transition-all`}
+                              className={`h-2 rounded-full bg-linear-to-r ${colors.bar} transition-all`}
                               style={{ width: `${percentage}%` }}
                             />
                           </div>
                         </div>
-                        <p className={`text-sm font-bold ${colors.text} flex-shrink-0`}>
+                        <p className={`text-sm font-bold ${colors.text} shrink-0`}>
                           {grade.marks}/{grade.maxMarks} ({percentage}%)
                         </p>
                       </div>

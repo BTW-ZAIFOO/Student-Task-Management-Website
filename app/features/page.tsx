@@ -57,7 +57,7 @@ export default function FeaturesPage() {
 
   return (
     <PageLayout>
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50/30 to-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-b from-blue-50/30 to-white">
         <div className="max-w-4xl mx-auto text-center mb-12">
           <SectionHeader
             title="Powerful Features Built for Academic Success"
@@ -84,7 +84,7 @@ export default function FeaturesPage() {
         <div className="max-w-4xl mx-auto text-center mt-12">
           <a
             href="/signup"
-            className="inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-semibold hover:shadow-lg transition-smooth"
+            className="inline-block px-8 py-3 bg-linear-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-semibold hover:shadow-lg transition-smooth"
           >
             Start Using StudentSphere
           </a>

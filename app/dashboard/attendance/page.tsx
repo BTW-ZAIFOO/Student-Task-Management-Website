@@ -97,7 +97,7 @@ export default function AttendancePage() {
             </div>
             <div className="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-3">
               <div
-                className="bg-gradient-to-r from-blue-500 to-indigo-600 h-3 rounded-full transition-all"
+                className="bg-linear-to-r from-blue-500 to-indigo-600 h-3 rounded-full transition-all"
                 style={{ width: `${getTotalAttendance()}%` }}
               />
             </div>
@@ -117,11 +117,11 @@ export default function AttendancePage() {
                     <div className="flex items-center justify-between mb-2">
                       <div className="w-full bg-gray-300 dark:bg-slate-700 rounded-full h-2 mr-3">
                         <div
-                          className="bg-gradient-to-r from-green-500 to-emerald-600 h-2 rounded-full transition-all"
+                          className="bg-linear-to-r from-green-500 to-emerald-600 h-2 rounded-full transition-all"
                           style={{ width: `${getSubjectAttendance(subject)}%` }}
                         />
                       </div>
-                      <span className="text-sm font-bold text-gray-900 dark:text-white flex-shrink-0">
+                      <span className="text-sm font-bold text-gray-900 dark:text-white shrink-0">
                         {getSubjectAttendance(subject)}%
                       </span>
                     </div>
