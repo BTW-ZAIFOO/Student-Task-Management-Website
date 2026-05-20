@@ -30,7 +30,7 @@ export default function HowItWorks() {
           </div>
 
           <div className="md:col-span-2">
-            <div className="p-6 bg-gradient-to-br from-blue-50 to-white rounded-xl shadow-inner">
+            <div className="p-6 bg-linear-to-br from-blue-50 to-white rounded-xl shadow-inner">
               <h5 className="text-sm font-semibold">Timeline</h5>
               <ol className="mt-4 space-y-3 text-sm text-gray-600">
                 <li>Account setup → Profile → Academic Level</li>
