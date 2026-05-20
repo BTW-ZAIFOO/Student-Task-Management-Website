@@ -2,13 +2,17 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import NavbarProCompact from '@/components/NavbarProCompact';
+import PageLayout from '@/components/PageLayout';
+import StudentIDCard from '@/components/StudentIDCard';
 import {
-  IoDownload,
   IoCreate,
   IoPerson,
   IoMail,
-  IoLocation,
+  IoSchool,
+  IoCalendar,
+  IoStar,
+  IoShieldCheckmark,
+  IoCheckmarkCircle,
 } from 'react-icons/io5';
 
 interface StudentProfile {
@@ -17,14 +21,16 @@ interface StudentProfile {
   email: string;
   academicLevel: string;
   enrollDate: string;
-  avatar?: string;
+  gpa?: string;
+  major?: string;
+  credits?: number;
 }
 
 export default function ProfilePage() {
   const router = useRouter();
-
   const [student, setStudent] = useState<StudentProfile | null>(null);
   const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState<StudentProfile | null>(null);
 
   useEffect(() => {
     const id = localStorage.getItem('studentId');
@@ -37,262 +43,287 @@ export default function ProfilePage() {
       return;
     }
 
-    setStudent({
+    const studentData: StudentProfile = {
       id,
       name: name || 'Student Name',
       email: email || 'student@example.com',
       academicLevel: level || 'University',
       enrollDate: new Date().toISOString().split('T')[0],
-    });
+      gpa: '3.8',
+      major: 'Computer Science',
+      credits: 45,
+    };
+
+    setStudent(studentData);
+    setFormData(studentData);
   }, [router]);
 
-  const downloadIDCard = () => {
-    const card = document.getElementById('idCard');
+  const handleSaveProfile = () => {
+    if (formData) {
+      setStudent(formData);
+      localStorage.setItem('studentName', formData.name);
+      localStorage.setItem('studentEmail', formData.email);
+      localStorage.setItem('academicLevel', formData.academicLevel);
+      setIsEditing(false);
+    }
+  };
 
-    if (!card) return;
-
-    alert(
-      'For real image download functionality, use html2canvas package.'
-    );
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => (prev ? { ...prev, [name]: value } : null));
   };
 
   if (!student) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-sm text-gray-600">Loading Profile...</div>
-      </div>
+      <PageLayout>
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-sm text-gray-600 dark:text-gray-400">Loading Profile...</div>
+        </div>
+      </PageLayout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 overflow-x-hidden">
-      <NavbarProCompact />
-
-      <main className="pt-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <PageLayout>
+      <div className="min-h-screen bg-white dark:bg-slate-950 py-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
                 Student Profile
               </h1>
-
-              <p className="text-xs text-gray-600 mt-1">
-                Manage your StudentSphere account
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                Manage your StudentSphere account and view your academic information
               </p>
             </div>
 
             <button
-              onClick={() => setIsEditing(!isEditing)}
-              className="w-fit p-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition-all duration-200 flex items-center gap-2 text-xs font-medium"
+              onClick={() => {
+                if (isEditing) {
+                  handleSaveProfile();
+                } else {
+                  setIsEditing(true);
+                }
+              }}
+              className="w-fit px-4 py-2 bg-blue-600 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-800 text-white rounded-lg transition-colors flex items-center gap-2 text-sm font-medium"
             >
               <IoCreate className="w-4 h-4" />
-              {isEditing ? 'Cancel' : 'Edit'}
+              {isEditing ? 'Save Profile' : 'Edit Profile'}
             </button>
           </div>
 
           {/* Main Grid */}
-          <div className="grid lg:grid-cols-2 gap-6">
-            {/* Profile Information */}
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-              <h2 className="text-sm font-bold text-gray-900 mb-5">
-                Profile Information
+          <div className="grid lg:grid-cols-3 gap-6 mb-8">
+            {/* Profile Information Card */}
+            <div className="lg:col-span-1 bg-white dark:bg-slate-800 rounded-2xl shadow-md border border-gray-200 dark:border-slate-700 p-6 transition-colors">
+              <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-6">
+                Personal Information
               </h2>
 
-              <div className="space-y-5">
+              <div className="space-y-6">
                 {/* Avatar */}
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-md">
+                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg">
                     {student.name.charAt(0).toUpperCase()}
                   </div>
 
                   <div>
-                    <p className="text-xs text-gray-500">Full Name</p>
-
-                    <p className="text-sm font-semibold text-gray-900">
+                    <p className="text-xs text-gray-600 dark:text-gray-400 font-medium">
+                      Student Account
+                    </p>
+                    <p className="text-lg font-bold text-gray-900 dark:text-white">
                       {student.name}
+                    </p>
+                    <p className="text-xs text-green-600 dark:text-green-400 flex items-center gap-1 mt-1">
+                      <IoCheckmarkCircle className="w-3 h-3" />
+                      Verified
                     </p>
                   </div>
                 </div>
 
-                {/* Details */}
-                <div className="border-t border-gray-100 pt-5 space-y-4">
+                <div className="border-t border-gray-200 dark:border-slate-700 pt-6 space-y-4">
                   {/* Email */}
-                  <div className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-blue-50">
-                      <IoMail className="w-4 h-4 text-blue-600" />
-                    </div>
-
-                    <div>
-                      <p className="text-xs text-gray-500">
-                        Email Address
-                      </p>
-
-                      <p className="text-sm font-medium text-gray-900 break-all">
+                  <div>
+                    <label className="text-xs font-semibold text-gray-600 dark:text-gray-400 flex items-center gap-2 mb-2">
+                      <IoMail className="w-4 h-4" />
+                      Email Address
+                    </label>
+                    {isEditing ? (
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData?.email || ''}
+                        onChange={handleInputChange}
+                        className="w-full px-3 py-2 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-lg text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    ) : (
+                      <p className="text-sm text-gray-900 dark:text-gray-300 font-medium break-all">
                         {student.email}
                       </p>
-                    </div>
+                    )}
                   </div>
 
                   {/* Academic Level */}
-                  <div className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-indigo-50">
-                      <IoPerson className="w-4 h-4 text-indigo-600" />
-                    </div>
-
-                    <div>
-                      <p className="text-xs text-gray-500">
-                        Academic Level
-                      </p>
-
-                      <p className="text-sm font-medium text-gray-900">
+                  <div>
+                    <label className="text-xs font-semibold text-gray-600 dark:text-gray-400 flex items-center gap-2 mb-2">
+                      <IoSchool className="w-4 h-4" />
+                      Academic Level
+                    </label>
+                    {isEditing ? (
+                      <input
+                        type="text"
+                        name="academicLevel"
+                        value={formData?.academicLevel || ''}
+                        onChange={handleInputChange}
+                        className="w-full px-3 py-2 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-lg text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    ) : (
+                      <p className="text-sm text-gray-900 dark:text-gray-300 font-medium">
                         {student.academicLevel}
                       </p>
-                    </div>
+                    )}
                   </div>
 
                   {/* Enrollment Date */}
-                  <div className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-green-50">
-                      <IoLocation className="w-4 h-4 text-green-600" />
-                    </div>
+                  <div>
+                    <label className="text-xs font-semibold text-gray-600 dark:text-gray-400 flex items-center gap-2 mb-2">
+                      <IoCalendar className="w-4 h-4" />
+                      Enrollment Date
+                    </label>
+                    <p className="text-sm text-gray-900 dark:text-gray-300 font-medium">
+                      {new Date(student.enrollDate).toLocaleDateString()}
+                    </p>
+                  </div>
 
-                    <div>
-                      <p className="text-xs text-gray-500">
-                        Enrollment Date
-                      </p>
-
-                      <p className="text-sm font-medium text-gray-900">
-                        {student.enrollDate}
-                      </p>
-                    </div>
+                  {/* Student ID */}
+                  <div>
+                    <label className="text-xs font-semibold text-gray-600 dark:text-gray-400 flex items-center gap-2 mb-2">
+                      <IoShieldCheckmark className="w-4 h-4" />
+                      Student ID
+                    </label>
+                    <p className="text-sm text-gray-900 dark:text-gray-300 font-mono font-bold">
+                      {student.id}
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Student ID Card */}
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-              <div className="flex items-center justify-between mb-5">
-                <h2 className="text-sm font-bold text-gray-900">
-                  Student ID Card
-                </h2>
+            {/* Academic Stats */}
+            <div className="lg:col-span-2 grid md:grid-cols-2 gap-6">
+              {/* Academic Overview Card */}
+              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-md border border-gray-200 dark:border-slate-700 p-6 transition-colors">
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+                  <IoStar className="w-5 h-5 text-yellow-500" />
+                  Academic Standing
+                </h3>
 
-                <button
-                  onClick={downloadIDCard}
-                  className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center gap-1 text-xs font-medium"
-                >
-                  <IoDownload className="w-3.5 h-3.5" />
-                  Download
-                </button>
-              </div>
+                <div className="space-y-4">
+                  <div>
+                    <div className="flex items-end justify-between mb-2">
+                      <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">GPA</span>
+                      <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                        {student.gpa}
+                      </span>
+                    </div>
+                    <div className="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2">
+                      <div
+                        className="bg-gradient-to-r from-blue-500 to-indigo-600 h-2 rounded-full"
+                        style={{ width: `${(parseFloat(student.gpa || '0') / 4) * 100}%` }}
+                      ></div>
+                    </div>
+                  </div>
 
-              {/* ID Card */}
-              <div
-                id="idCard"
-                className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl border border-white/10 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700"
-              >
-                {/* Glow Effects */}
-                <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-3xl" />
-
-                <div className="absolute bottom-0 left-0 w-40 h-40 bg-cyan-400/10 rounded-full blur-3xl" />
-
-                {/* Pattern */}
-                <div className="absolute inset-0 opacity-10">
-                  <div className="absolute top-4 right-4 text-white text-7xl">
-                    ✦
+                  <div className="border-t border-gray-200 dark:border-slate-700 pt-4">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        Credits Completed
+                      </span>
+                      <span className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+                        {student.credits}
+                      </span>
+                    </div>
+                    <div className="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2">
+                      <div
+                        className="bg-gradient-to-r from-indigo-500 to-purple-600 h-2 rounded-full"
+                        style={{ width: `${(student.credits! / 120) * 100}%` }}
+                      ></div>
+                    </div>
+                    <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
+                      {student.credits} / 120 credits toward degree
+                    </p>
                   </div>
                 </div>
+              </div>
 
-                {/* Content */}
-                <div className="relative z-10 h-full flex flex-col justify-between p-6 text-white">
-                  {/* Top */}
+              {/* Academic Details Card */}
+              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-md border border-gray-200 dark:border-slate-700 p-6 transition-colors">
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+                  <IoSchool className="w-5 h-5 text-indigo-500" />
+                  Academic Details
+                </h3>
+
+                <div className="space-y-4">
                   <div>
-                    <h3 className="text-lg sm:text-xl font-bold tracking-wide">
-                      StudentSphere
-                    </h3>
-
-                    <p className="text-xs opacity-80 mt-1">
-                      Official Student ID Card
+                    <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
+                      Major
+                    </p>
+                    <p className="text-sm text-gray-900 dark:text-gray-300 font-medium">
+                      {student.major}
                     </p>
                   </div>
 
-                  {/* Middle */}
-                  <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 bg-white/20 backdrop-blur-md rounded-xl border border-white/30 flex items-center justify-center text-2xl font-bold">
-                      {student.name.charAt(0).toUpperCase()}
-                    </div>
-
-                    <div className="overflow-hidden">
-                      <p className="text-sm font-semibold truncate">
-                        {student.name}
-                      </p>
-
-                      <p className="text-xs opacity-80">
-                        {student.academicLevel}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Bottom */}
-                  <div>
-                    <div className="flex items-center justify-between text-[10px] sm:text-xs mb-2">
-                      <span>
-                        ID:{' '}
-                        {student.id.slice(0, 8).toUpperCase()}
+                  <div className="border-t border-gray-200 dark:border-slate-700 pt-4">
+                    <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
+                      Academic Status
+                    </p>
+                    <div className="flex items-center gap-2 mt-2">
+                      <IoCheckmarkCircle className="w-4 h-4 text-green-600 dark:text-green-400" />
+                      <span className="text-sm text-green-700 dark:text-green-300 font-medium">
+                        Good Standing
                       </span>
-
-                      <span>Valid Since: 2026</span>
                     </div>
+                  </div>
 
-                    <div className="h-px bg-white/20" />
-
-                    <p className="text-[10px] sm:text-xs opacity-70 mt-2">
-                      www.studentsphere.com
+                  <div className="border-t border-gray-200 dark:border-slate-700 pt-4">
+                    <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-2">
+                      Current Semester
                     </p>
+                    <div className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-xs font-semibold">
+                      Spring 2026
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Academic Statistics */}
-          <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {/* Subjects */}
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
-              <p className="text-xs text-gray-500 mb-1">
-                Total Subjects
-              </p>
+          {/* Student ID Card Section */}
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-md border border-gray-200 dark:border-slate-700 p-8 transition-colors">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              Official Student ID Card
+            </h2>
 
-              <p className="text-3xl font-bold text-gray-900">
-                4
-              </p>
+            <div className="p-8 bg-gray-50 dark:bg-slate-900 rounded-xl">
+              <StudentIDCard
+                studentName={student.name}
+                studentId={student.id}
+                academicLevel={student.academicLevel}
+                enrollmentDate={new Date(student.enrollDate).toLocaleDateString()}
+                avatarInitials={student.name.charAt(0).toUpperCase()}
+                email={student.email}
+                major={student.major}
+                gpa={student.gpa}
+              />
             </div>
 
-            {/* GPA */}
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
-              <p className="text-xs text-gray-500 mb-1">
-                Current GPA
-              </p>
-
-              <p className="text-3xl font-bold text-gray-900">
-                3.8
-              </p>
-            </div>
-
-            {/* Attendance */}
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
-              <p className="text-xs text-gray-500 mb-1">
-                Attendance
-              </p>
-
-              <p className="text-3xl font-bold text-gray-900">
-                95%
-              </p>
-            </div>
+            <p className="text-xs text-gray-600 dark:text-gray-400 mt-4 text-center">
+              Your official StudentSphere ID card. Click to flip for security features and QR code.
+            </p>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </PageLayout>
   );
 }
