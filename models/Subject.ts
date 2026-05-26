@@ -1,7 +1,7 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
 export interface ISubject extends Document {
-  _id: string;
+  _id: mongoose.Types.ObjectId;
   studentId: string;
   name: string;
   code: string;

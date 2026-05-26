@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useIntersectionReveal } from './useIntersectionReveal';
 
 interface AcademicLevelProps {
   level: string;
@@ -15,34 +15,15 @@ export default function AcademicLevelCard({
   icon,
   index = 0,
 }: AcademicLevelProps) {
-  const ref = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref, isRevealed } = useIntersectionReveal<HTMLDivElement>();
 
   return (
     <div
       ref={ref}
-      className={`flex flex-col items-center text-center p-6 rounded-xl border border-gray-200 bg-gradient-to-br from-blue-50/50 to-indigo-50/50 hover:shadow-lg transition-smooth group ${
-        isVisible ? 'animate-fade-in-up' : 'opacity-0'
+      className={`flex flex-col items-center text-center p-6 rounded-xl border border-gray-200 bg-linear-to-br from-blue-50/50 to-indigo-50/50 hover:shadow-lg transition-smooth group ${
+        isRevealed ? 'animate-fade-in-up' : 'opacity-0'
       }`}
-      style={{ transitionDelay: isVisible ? `${index * 50}ms` : '0ms' }}
+      style={{ transitionDelay: isRevealed ? `${index * 50}ms` : '0ms' }}
     >
       <div className="mb-3 p-3 bg-white rounded-lg group-hover:bg-blue-50 transition-smooth">
         <div className="text-2xl text-blue-600">{icon}</div>

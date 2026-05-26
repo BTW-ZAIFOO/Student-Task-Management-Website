@@ -92,16 +92,16 @@ export default function NotesPage() {
 
   return (
     <PageLayout>
-      <div className="min-h-screen bg-white dark:bg-slate-950 py-8 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+      <div className="min-h-screen bg-white bg-slate-950 py-8 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Study Notes</h1>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Organize and manage your study materials</p>
+              <h1 className="text-3xl font-bold text-gray-900 text-white">Study Notes</h1>
+              <p className="text-sm text-gray-600 text-gray-400 mt-1">Organize and manage your study materials</p>
             </div>
             <button
               onClick={() => setIsAdding(!isAdding)}
-              className="px-4 py-2 bg-blue-600 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-800 text-white rounded-lg flex items-center gap-2 text-sm font-medium transition-colors"
+              className="px-4 py-2 bg-blue-600 bg-blue-700 hover:bg-blue-700 hover:bg-blue-800 text-white rounded-lg flex items-center gap-2 text-sm font-medium transition-colors"
             >
               <IoAdd className="w-4 h-4" />
               New Note
@@ -110,45 +110,45 @@ export default function NotesPage() {
 
           {/* Add Note Form */}
           {isAdding && (
-            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-md border border-gray-200 dark:border-slate-700 p-6 mb-6 transition-colors">
+            <div className="bg-white bg-slate-800 rounded-2xl shadow-md border border-gray-200 border-slate-700 p-6 mb-6 transition-colors">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-bold text-gray-900 dark:text-white">Create New Note</h2>
+                <h2 className="text-lg font-bold text-gray-900 text-white">Create New Note</h2>
                 <button
                   onClick={() => setIsAdding(false)}
-                  className="p-1 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+                  className="p-1 text-gray-500 text-gray-400 hover:text-gray-700 hover:text-gray-200"
                 >
                   <IoClose className="w-5 h-5" />
                 </button>
               </div>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Subject</label>
+                  <label className="block text-sm font-semibold text-gray-700 text-gray-300 mb-2">Subject</label>
                   <input
                     type="text"
                     placeholder="Enter subject name"
                     value={newNote.subject}
                     onChange={(e) => setNewNote({ ...newNote, subject: e.target.value })}
-                    className="w-full px-4 py-2 text-sm border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                    className="w-full px-4 py-2 text-sm border border-gray-300 border-slate-600 rounded-lg bg-white bg-slate-900 text-gray-900 text-white placeholder-gray-500 placeholder-gray-400"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Note Title</label>
+                  <label className="block text-sm font-semibold text-gray-700 text-gray-300 mb-2">Note Title</label>
                   <input
                     type="text"
                     placeholder="Title for your note"
                     value={newNote.title}
                     onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}
-                    className="w-full px-4 py-2 text-sm border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                    className="w-full px-4 py-2 text-sm border border-gray-300 border-slate-600 rounded-lg bg-white bg-slate-900 text-gray-900 text-white placeholder-gray-500 placeholder-gray-400"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Content</label>
+                  <label className="block text-sm font-semibold text-gray-700 text-gray-300 mb-2">Content</label>
                   <textarea
                     placeholder="Write your note here..."
                     value={newNote.content}
                     onChange={(e) => setNewNote({ ...newNote, content: e.target.value })}
                     rows={5}
-                    className="w-full px-4 py-2 text-sm border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 text-sm border border-gray-300 border-slate-600 rounded-lg bg-white bg-slate-900 text-gray-900 text-white placeholder-gray-500 placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div className="flex gap-3">
@@ -160,7 +160,7 @@ export default function NotesPage() {
                   </button>
                   <button
                     onClick={() => setIsAdding(false)}
-                    className="flex-1 px-4 py-2 bg-gray-300 dark:bg-slate-700 hover:bg-gray-400 dark:hover:bg-slate-600 text-gray-900 dark:text-white rounded-lg font-medium transition-colors"
+                    className="flex-1 px-4 py-2 bg-gray-300 bg-slate-700 hover:bg-gray-400 hover:bg-slate-600 text-gray-900 text-white rounded-lg font-medium transition-colors"
                   >
                     Cancel
                   </button>
@@ -173,8 +173,8 @@ export default function NotesPage() {
           {subjects.length > 0 ? (
             subjects.map((subject) => (
               <div key={subject} className="mb-8">
-                <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                  <IoDocuments className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                <h2 className="text-xl font-bold text-gray-900 text-white mb-4 flex items-center gap-2">
+                  <IoDocuments className="w-5 h-5 text-blue-600 text-blue-400" />
                   {subject}
                 </h2>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -183,33 +183,33 @@ export default function NotesPage() {
                     .map((note) => (
                       <div
                         key={note.id}
-                        className="bg-white dark:bg-slate-800 rounded-xl shadow-md border border-gray-200 dark:border-slate-700 p-5 transition-all hover:shadow-lg"
+                        className="bg-white bg-slate-800 rounded-xl shadow-md border border-gray-200 border-slate-700 p-5 transition-all hover:shadow-lg"
                       >
                         <div className="flex items-start justify-between mb-3">
                           <div className="flex-1">
-                            <p className="text-sm font-semibold text-gray-900 dark:text-white">{note.title}</p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                            <p className="text-sm font-semibold text-gray-900 text-white">{note.title}</p>
+                            <p className="text-xs text-gray-500 text-gray-400 mt-1">
                               {new Date(note.createdAt).toLocaleDateString()}
                             </p>
                           </div>
                           <div className="flex items-center gap-1 ml-3">
                             <button
                               onClick={() => downloadNote(note)}
-                              className="p-2 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
+                              className="p-2 text-blue-600 text-blue-400 hover:bg-blue-50 hover:bg-blue-900/20 rounded-lg transition-colors"
                               title="Download note"
                             >
                               <IoDownload className="w-4 h-4" />
                             </button>
                             <button
                               onClick={() => deleteNote(note.id)}
-                              className="p-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                              className="p-2 text-red-600 text-red-400 hover:bg-red-50 hover:bg-red-900/20 rounded-lg transition-colors"
                               title="Delete note"
                             >
                               <IoTrash className="w-4 h-4" />
                             </button>
                           </div>
                         </div>
-                        <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-4 bg-gray-50 dark:bg-slate-900 p-3 rounded-lg">
+                        <p className="text-sm text-gray-700 text-gray-300 line-clamp-4 bg-gray-50 bg-slate-900 p-3 rounded-lg">
                           {note.content}
                         </p>
                       </div>
@@ -219,9 +219,9 @@ export default function NotesPage() {
             ))
           ) : (
             <div className="text-center py-16">
-              <IoDocuments className="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
-              <p className="text-lg text-gray-600 dark:text-gray-400 font-medium">No notes yet</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Create your first note to get started!</p>
+              <IoDocuments className="w-12 h-12 text-gray-300 text-gray-600 mx-auto mb-4" />
+              <p className="text-lg text-gray-600 text-gray-400 font-medium">No notes yet</p>
+              <p className="text-sm text-gray-500 text-gray-400 mt-1">Create your first note to get started!</p>
             </div>
           )}
         </div>

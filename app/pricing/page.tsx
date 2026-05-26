@@ -70,7 +70,7 @@ export default function Pricing() {
               style={{ animationDelay: `${idx * 100}ms` }}
             >
               {plan.highlighted && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-1 rounded-full text-xs font-semibold">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-linear-to-r from-blue-600 to-indigo-600 text-white px-4 py-1 rounded-full text-xs font-semibold">
                   MOST POPULAR
                 </div>
               )}
@@ -86,7 +86,7 @@ export default function Pricing() {
               <button
                 className={`w-full mt-6 px-6 py-3 rounded-lg font-semibold transition-smooth ${
                   plan.highlighted
-                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg'
+                    ? 'bg-linear-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg'
                     : 'border-2 border-gray-200 text-gray-900 hover:border-blue-600 hover:text-blue-600'
                 }`}
               >

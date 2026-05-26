@@ -1,6 +1,7 @@
 'use client';
 
 import ProblemCard from './ProblemCard';
+import SectionContainer from './SectionContainer';
 import SectionHeader from './SectionHeader';
 import { IoWarning, IoClose, IoAlertCircle, IoTime, IoBarChart, IoHourglass } from 'react-icons/io5';
 
@@ -44,8 +45,7 @@ export default function ProblemStatement() {
   ];
 
   return (
-    <section id="problems" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-6xl mx-auto">
+    <SectionContainer id="problems">
         <SectionHeader
           title="The Problem Every Student Faces"
           subtitle="Academic life shouldn't mean managing chaos. We understand the pain points."
@@ -62,7 +62,6 @@ export default function ProblemStatement() {
             />
           ))}
         </div>
-      </div>
-    </section>
+    </SectionContainer>
   );
 }

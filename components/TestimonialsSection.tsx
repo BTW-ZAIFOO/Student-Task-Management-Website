@@ -1,5 +1,6 @@
 'use client';
 
+import SectionContainer from './SectionContainer';
 import SectionHeader from './SectionHeader';
 import TestimonialCard from './TestimonialCard';
 
@@ -26,8 +27,7 @@ export default function TestimonialsSection() {
   ];
 
   return (
-    <section id="testimonials" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50/30 to-transparent">
-      <div className="max-w-6xl mx-auto">
+    <SectionContainer id="testimonials">
         <SectionHeader
           title="What Students Say About StudentSphere"
           subtitle="Real feedback from students achieving real academic success"
@@ -44,7 +44,6 @@ export default function TestimonialsSection() {
             />
           ))}
         </div>
-      </div>
-    </section>
+    </SectionContainer>
   );
 }

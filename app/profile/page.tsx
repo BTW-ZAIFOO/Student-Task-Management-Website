@@ -77,7 +77,7 @@ export default function ProfilePage() {
     return (
       <PageLayout>
         <div className="min-h-screen flex items-center justify-center">
-          <div className="text-sm text-gray-600 dark:text-gray-400">Loading Profile...</div>
+          <div className="text-sm text-gray-600 text-gray-400">Loading Profile...</div>
         </div>
       </PageLayout>
     );
@@ -85,15 +85,15 @@ export default function ProfilePage() {
 
   return (
     <PageLayout>
-      <div className="min-h-screen bg-white dark:bg-slate-950 py-8 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-white bg-slate-950 py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+              <h1 className="text-3xl font-bold text-gray-900 text-white">
                 Student Profile
               </h1>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+              <p className="text-sm text-gray-600 text-gray-400 mt-1">
                 Manage your StudentSphere account and view your academic information
               </p>
             </div>
@@ -106,7 +106,7 @@ export default function ProfilePage() {
                   setIsEditing(true);
                 }
               }}
-              className="w-fit px-4 py-2 bg-blue-600 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-800 text-white rounded-lg transition-colors flex items-center gap-2 text-sm font-medium"
+              className="w-fit px-4 py-2 bg-blue-600 bg-blue-700 hover:bg-blue-700 hover:bg-blue-800 text-white rounded-lg transition-colors flex items-center gap-2 text-sm font-medium"
             >
               <IoCreate className="w-4 h-4" />
               {isEditing ? 'Save Profile' : 'Edit Profile'}
@@ -116,36 +116,36 @@ export default function ProfilePage() {
           {/* Main Grid */}
           <div className="grid lg:grid-cols-3 gap-6 mb-8">
             {/* Profile Information Card */}
-            <div className="lg:col-span-1 bg-white dark:bg-slate-800 rounded-2xl shadow-md border border-gray-200 dark:border-slate-700 p-6 transition-colors">
-              <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-6">
+            <div className="lg:col-span-1 bg-white bg-slate-800 rounded-2xl shadow-md border border-gray-200 border-slate-700 p-6 transition-colors">
+              <h2 className="text-lg font-bold text-gray-900 text-white mb-6">
                 Personal Information
               </h2>
 
               <div className="space-y-6">
                 {/* Avatar */}
                 <div className="flex items-center gap-4">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                  <div className="w-20 h-20 bg-linear-to-br from-blue-500 via-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg">
                     {student.name.charAt(0).toUpperCase()}
                   </div>
 
                   <div>
-                    <p className="text-xs text-gray-600 dark:text-gray-400 font-medium">
+                    <p className="text-xs text-gray-600 text-gray-400 font-medium">
                       Student Account
                     </p>
-                    <p className="text-lg font-bold text-gray-900 dark:text-white">
+                    <p className="text-lg font-bold text-gray-900 text-white">
                       {student.name}
                     </p>
-                    <p className="text-xs text-green-600 dark:text-green-400 flex items-center gap-1 mt-1">
+                    <p className="text-xs text-green-600 text-green-400 flex items-center gap-1 mt-1">
                       <IoCheckmarkCircle className="w-3 h-3" />
                       Verified
                     </p>
                   </div>
                 </div>
 
-                <div className="border-t border-gray-200 dark:border-slate-700 pt-6 space-y-4">
+                <div className="border-t border-gray-200 border-slate-700 pt-6 space-y-4">
                   {/* Email */}
                   <div>
-                    <label className="text-xs font-semibold text-gray-600 dark:text-gray-400 flex items-center gap-2 mb-2">
+                    <label className="text-xs font-semibold text-gray-600 text-gray-400 flex items-center gap-2 mb-2">
                       <IoMail className="w-4 h-4" />
                       Email Address
                     </label>
@@ -155,10 +155,10 @@ export default function ProfilePage() {
                         name="email"
                         value={formData?.email || ''}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-lg text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 bg-gray-50 bg-slate-700 border border-gray-300 border-slate-600 rounded-lg text-sm text-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     ) : (
-                      <p className="text-sm text-gray-900 dark:text-gray-300 font-medium break-all">
+                      <p className="text-sm text-gray-900 text-gray-300 font-medium break-all">
                         {student.email}
                       </p>
                     )}
@@ -166,7 +166,7 @@ export default function ProfilePage() {
 
                   {/* Academic Level */}
                   <div>
-                    <label className="text-xs font-semibold text-gray-600 dark:text-gray-400 flex items-center gap-2 mb-2">
+                    <label className="text-xs font-semibold text-gray-600 text-gray-400 flex items-center gap-2 mb-2">
                       <IoSchool className="w-4 h-4" />
                       Academic Level
                     </label>
@@ -176,10 +176,10 @@ export default function ProfilePage() {
                         name="academicLevel"
                         value={formData?.academicLevel || ''}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-lg text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 bg-gray-50 bg-slate-700 border border-gray-300 border-slate-600 rounded-lg text-sm text-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     ) : (
-                      <p className="text-sm text-gray-900 dark:text-gray-300 font-medium">
+                      <p className="text-sm text-gray-900 text-gray-300 font-medium">
                         {student.academicLevel}
                       </p>
                     )}
@@ -187,22 +187,22 @@ export default function ProfilePage() {
 
                   {/* Enrollment Date */}
                   <div>
-                    <label className="text-xs font-semibold text-gray-600 dark:text-gray-400 flex items-center gap-2 mb-2">
+                    <label className="text-xs font-semibold text-gray-600 text-gray-400 flex items-center gap-2 mb-2">
                       <IoCalendar className="w-4 h-4" />
                       Enrollment Date
                     </label>
-                    <p className="text-sm text-gray-900 dark:text-gray-300 font-medium">
+                    <p className="text-sm text-gray-900 text-gray-300 font-medium">
                       {new Date(student.enrollDate).toLocaleDateString()}
                     </p>
                   </div>
 
                   {/* Student ID */}
                   <div>
-                    <label className="text-xs font-semibold text-gray-600 dark:text-gray-400 flex items-center gap-2 mb-2">
+                    <label className="text-xs font-semibold text-gray-600 text-gray-400 flex items-center gap-2 mb-2">
                       <IoShieldCheckmark className="w-4 h-4" />
                       Student ID
                     </label>
-                    <p className="text-sm text-gray-900 dark:text-gray-300 font-mono font-bold">
+                    <p className="text-sm text-gray-900 text-gray-300 font-mono font-bold">
                       {student.id}
                     </p>
                   </div>
@@ -213,8 +213,8 @@ export default function ProfilePage() {
             {/* Academic Stats */}
             <div className="lg:col-span-2 grid md:grid-cols-2 gap-6">
               {/* Academic Overview Card */}
-              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-md border border-gray-200 dark:border-slate-700 p-6 transition-colors">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+              <div className="bg-white bg-slate-800 rounded-2xl shadow-md border border-gray-200 border-slate-700 p-6 transition-colors">
+                <h3 className="text-lg font-bold text-gray-900 text-white mb-6 flex items-center gap-2">
                   <IoStar className="w-5 h-5 text-yellow-500" />
                   Academic Standing
                 </h3>
@@ -222,35 +222,35 @@ export default function ProfilePage() {
                 <div className="space-y-4">
                   <div>
                     <div className="flex items-end justify-between mb-2">
-                      <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">GPA</span>
-                      <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                      <span className="text-sm font-semibold text-gray-700 text-gray-300">GPA</span>
+                      <span className="text-2xl font-bold text-blue-600 text-blue-400">
                         {student.gpa}
                       </span>
                     </div>
-                    <div className="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2">
+                    <div className="w-full bg-gray-200 bg-slate-700 rounded-full h-2">
                       <div
-                        className="bg-gradient-to-r from-blue-500 to-indigo-600 h-2 rounded-full"
+                        className="bg-linear-to-r from-blue-500 to-indigo-600 h-2 rounded-full"
                         style={{ width: `${(parseFloat(student.gpa || '0') / 4) * 100}%` }}
                       ></div>
                     </div>
                   </div>
 
-                  <div className="border-t border-gray-200 dark:border-slate-700 pt-4">
+                  <div className="border-t border-gray-200 border-slate-700 pt-4">
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                      <span className="text-sm font-semibold text-gray-700 text-gray-300">
                         Credits Completed
                       </span>
-                      <span className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+                      <span className="text-2xl font-bold text-indigo-600 text-indigo-400">
                         {student.credits}
                       </span>
                     </div>
-                    <div className="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2">
+                    <div className="w-full bg-gray-200 bg-slate-700 rounded-full h-2">
                       <div
-                        className="bg-gradient-to-r from-indigo-500 to-purple-600 h-2 rounded-full"
+                        className="bg-linear-to-r from-indigo-500 to-purple-600 h-2 rounded-full"
                         style={{ width: `${(student.credits! / 120) * 100}%` }}
                       ></div>
                     </div>
-                    <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
+                    <p className="text-xs text-gray-600 text-gray-400 mt-2">
                       {student.credits} / 120 credits toward degree
                     </p>
                   </div>
@@ -258,39 +258,39 @@ export default function ProfilePage() {
               </div>
 
               {/* Academic Details Card */}
-              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-md border border-gray-200 dark:border-slate-700 p-6 transition-colors">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+              <div className="bg-white bg-slate-800 rounded-2xl shadow-md border border-gray-200 border-slate-700 p-6 transition-colors">
+                <h3 className="text-lg font-bold text-gray-900 text-white mb-6 flex items-center gap-2">
                   <IoSchool className="w-5 h-5 text-indigo-500" />
                   Academic Details
                 </h3>
 
                 <div className="space-y-4">
                   <div>
-                    <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
+                    <p className="text-xs font-semibold text-gray-600 text-gray-400 mb-1">
                       Major
                     </p>
-                    <p className="text-sm text-gray-900 dark:text-gray-300 font-medium">
+                    <p className="text-sm text-gray-900 text-gray-300 font-medium">
                       {student.major}
                     </p>
                   </div>
 
-                  <div className="border-t border-gray-200 dark:border-slate-700 pt-4">
-                    <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
+                  <div className="border-t border-gray-200 border-slate-700 pt-4">
+                    <p className="text-xs font-semibold text-gray-600 text-gray-400 mb-1">
                       Academic Status
                     </p>
                     <div className="flex items-center gap-2 mt-2">
-                      <IoCheckmarkCircle className="w-4 h-4 text-green-600 dark:text-green-400" />
-                      <span className="text-sm text-green-700 dark:text-green-300 font-medium">
+                      <IoCheckmarkCircle className="w-4 h-4 text-green-600 text-green-400" />
+                      <span className="text-sm text-green-700 text-green-300 font-medium">
                         Good Standing
                       </span>
                     </div>
                   </div>
 
-                  <div className="border-t border-gray-200 dark:border-slate-700 pt-4">
-                    <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-2">
+                  <div className="border-t border-gray-200 border-slate-700 pt-4">
+                    <p className="text-xs font-semibold text-gray-600 text-gray-400 mb-2">
                       Current Semester
                     </p>
-                    <div className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-xs font-semibold">
+                    <div className="inline-block px-3 py-1 bg-blue-100 bg-blue-900/30 text-blue-700 text-blue-300 rounded-full text-xs font-semibold">
                       Spring 2026
                     </div>
                   </div>
@@ -300,12 +300,12 @@ export default function ProfilePage() {
           </div>
 
           {/* Student ID Card Section */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-md border border-gray-200 dark:border-slate-700 p-8 transition-colors">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+          <div className="bg-white bg-slate-800 rounded-2xl shadow-md border border-gray-200 border-slate-700 p-8 transition-colors">
+            <h2 className="text-2xl font-bold text-gray-900 text-white mb-6">
               Official Student ID Card
             </h2>
 
-            <div className="p-8 bg-gray-50 dark:bg-slate-900 rounded-xl">
+            <div className="p-8 bg-gray-50 bg-slate-900 rounded-xl">
               <StudentIDCard
                 studentName={student.name}
                 studentId={student.id}
@@ -318,7 +318,7 @@ export default function ProfilePage() {
               />
             </div>
 
-            <p className="text-xs text-gray-600 dark:text-gray-400 mt-4 text-center">
+            <p className="text-xs text-gray-600 text-gray-400 mt-4 text-center">
               Your official StudentSphere ID card. Click to flip for security features and QR code.
             </p>
           </div>

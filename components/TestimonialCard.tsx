@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useIntersectionReveal } from './useIntersectionReveal';
 
 interface TestimonialProps {
   quote: string;
@@ -15,34 +15,15 @@ export default function TestimonialCard({
   level,
   index = 0,
 }: TestimonialProps) {
-  const ref = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref, isRevealed } = useIntersectionReveal<HTMLDivElement>();
 
   return (
     <div
       ref={ref}
       className={`p-8 rounded-2xl border border-gray-200 bg-white hover:shadow-xl transition-smooth ${
-        isVisible ? 'animate-fade-in-up' : 'opacity-0'
+        isRevealed ? 'animate-fade-in-up' : 'opacity-0'
       }`}
-      style={{ transitionDelay: isVisible ? `${index * 100}ms` : '0ms' }}
+      style={{ transitionDelay: isRevealed ? `${index * 100}ms` : '0ms' }}
     >
       <div className="flex gap-1 mb-4">
         {[...Array(5)].map((_, i) => (
@@ -57,7 +38,7 @@ export default function TestimonialCard({
       </div>
       <p className="text-gray-700 text-base leading-relaxed mb-6">"{quote}"</p>
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-indigo-400 rounded-full" />
+        <div className="w-10 h-10 bg-linear-to-br from-blue-400 to-indigo-400 rounded-full" />
         <div>
           <p className="font-semibold text-gray-900 text-sm">{author}</p>
           <p className="text-gray-600 text-xs">{level}</p>

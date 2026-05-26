@@ -3,8 +3,9 @@ import { NextRequest, NextResponse } from 'next/server';
 // Mock data storage for demo
 const students: any = {};
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(request: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
+    const params = await context.params;
     // Mock student data
     const student = {
       id: params.id,
@@ -24,8 +25,9 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
   }
 }
 
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(request: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
+    const params = await context.params;
     const data = await request.json();
     const student = { id: params.id, ...data };
     return NextResponse.json(student);

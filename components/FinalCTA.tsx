@@ -1,39 +1,20 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useIntersectionReveal } from './useIntersectionReveal';
 
 export default function FinalCTA() {
-  const ref = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref, isRevealed } = useIntersectionReveal<HTMLElement>();
 
   return (
     <section ref={ref} className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Animated background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600">
+      <div className="absolute inset-0 bg-linear-to-r from-blue-600 to-indigo-600">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style={{ animationDelay: '2s' }} />
       </div>
 
       <div className={`max-w-4xl mx-auto text-center relative z-10 ${
-        isVisible ? 'animate-fade-in-up' : 'opacity-0'
+        isRevealed ? 'animate-fade-in-up' : 'opacity-0'
       }`}>
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-slide-up">
           Start Your Structured Academic Journey Today

@@ -1,6 +1,7 @@
 'use client';
 
 import FeatureCard from './FeatureCard';
+import SectionContainer from './SectionContainer';
 import SectionHeader from './SectionHeader';
 import { IoCheckmarkCircle, IoBook, IoCalendar, IoPerson, IoDocuments, IoBarChart, IoNotifications, IoFitness } from 'react-icons/io5';
 
@@ -54,8 +55,7 @@ export default function FeaturesSection() {
   ];
 
   return (
-    <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-6xl mx-auto">
+    <SectionContainer id="features">
         <SectionHeader
           title="Everything You Need to Stay Academically Organized"
           subtitle="Comprehensive tools designed for academic success at every level"
@@ -72,7 +72,6 @@ export default function FeaturesSection() {
             />
           ))}
         </div>
-      </div>
-    </section>
+    </SectionContainer>
   );
 }

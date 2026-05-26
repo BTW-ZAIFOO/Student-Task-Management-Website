@@ -1,30 +1,12 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useIntersectionReveal } from './useIntersectionReveal';
+import SectionContainer from './SectionContainer';
 import SectionHeader from './SectionHeader';
 import StepCard from './StepCard';
 
 export default function HowItWorks() {
-  const ref = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref, isRevealed } = useIntersectionReveal<HTMLDivElement>();
 
   const steps = [
     {
@@ -50,37 +32,35 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-6xl mx-auto">
-        <SectionHeader
-          title="Get Started in Minutes"
-          subtitle="Simple, intuitive onboarding process designed for students"
-        />
+    <SectionContainer id="how-it-works">
+      <SectionHeader
+        title="Get Started in Minutes"
+        subtitle="Simple, intuitive onboarding process designed for students"
+      />
 
-        {/* Steps */}
-        <div
-          ref={ref}
-          className={`grid md:grid-cols-4 gap-8 ${
-            isVisible ? 'animate-fade-in-up' : 'opacity-0'
-          }`}
-        >
-          {steps.map((step, index) => (
-            <div key={index} className="relative">
-              <StepCard
-                number={step.number}
-                title={step.title}
-                description={step.description}
-                index={index}
-              />
+      {/* Steps */}
+      <div
+        ref={ref}
+        className={`grid md:grid-cols-4 gap-8 ${
+          isRevealed ? 'animate-fade-in-up' : 'opacity-0'
+        }`}
+      >
+        {steps.map((step, index) => (
+          <div key={index} className="relative">
+            <StepCard
+              number={step.number}
+              title={step.title}
+              description={step.description}
+              index={index}
+            />
 
-              {/* Connecting Line - Desktop Only */}
-              {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-8 -right-4 w-8 h-0.5 bg-gradient-to-r from-blue-300 to-transparent" />
-              )}
-            </div>
-          ))}
-        </div>
+            {/* Connecting Line - Desktop Only */}
+            {index < steps.length - 1 && (
+              <div className="hidden md:block absolute top-8 -right-4 w-8 h-0.5 bg-linear-to-r from-blue-300 to-transparent" />
+            )}
+          </div>
+        ))}
       </div>
-    </section>
+    </SectionContainer>
   );
 }

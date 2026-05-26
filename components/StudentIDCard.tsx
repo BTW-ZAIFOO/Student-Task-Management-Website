@@ -96,7 +96,7 @@ export default function StudentIDCard({
                   <div className="text-xs opacity-75">ACADEMIC ID</div>
                 </div>
                 {/* Hologram effect simulation */}
-                <div className="w-20 h-20 rounded-full opacity-20 bg-gradient-to-br from-yellow-300 via-pink-300 to-blue-300 blur-xl"></div>
+                <div className="w-20 h-20 rounded-full opacity-20 bg-linear-to-br from-yellow-300 via-pink-300 to-blue-300 blur-xl"></div>
               </div>
 
               {/* Middle Section - Student Info */}
@@ -152,8 +152,8 @@ export default function StudentIDCard({
 
             {/* Card Border Security Lines */}
             <div className="absolute inset-0 rounded-2xl pointer-events-none">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-300 via-transparent to-transparent opacity-40"></div>
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-300 to-transparent opacity-40"></div>
+              <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-yellow-300 via-transparent to-transparent opacity-40"></div>
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-cyan-300 to-transparent opacity-40"></div>
               <div className="absolute top-0 right-0 w-1 h-full bg-gradient-to-b from-pink-300 via-transparent to-transparent opacity-40"></div>
             </div>
           </div>
@@ -235,7 +235,7 @@ export default function StudentIDCard({
       </div>
 
       {/* Click to Flip Hint */}
-      <div className="text-center mt-4 text-gray-600 dark:text-gray-400 text-sm">
+      <div className="text-center mt-4 text-gray-600 text-sm">
         Click to flip card
       </div>
 
@@ -243,7 +243,7 @@ export default function StudentIDCard({
       <div className="flex gap-4 mt-6">
         <button
           onClick={handleDownload}
-          className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-800 text-white rounded-lg transition-colors"
+          className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
         >
           <IoDownload className="w-5 h-5" />
           Download ID Card

@@ -32,7 +32,7 @@ export default function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:shadow-xl transition-smooth hover:scale-105 active:scale-95 hover:animate-wiggle">
+              <button className="px-8 py-4 bg-linear-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:shadow-xl transition-smooth hover:scale-105 active:scale-95 hover:animate-wiggle">
                 Get Started Free
               </button>
               <button className="px-8 py-4 border-2 border-gray-300 text-gray-900 font-semibold rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-smooth">
@@ -55,7 +55,7 @@ export default function HeroSection() {
 
           {/* Right Content - Dashboard Preview */}
           <div className="relative animate-slide-in-right">
-            <div className="relative z-10 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 shadow-2xl border border-gray-200 animate-slide-up">
+            <div className="relative z-10 bg-linear-to-br from-gray-50 to-gray-100 rounded-2xl p-8 shadow-2xl border border-gray-200 animate-slide-up">
               {/* Dashboard Mock */}
               <div className="space-y-6">
                 {/* Header */}
@@ -66,7 +66,7 @@ export default function HeroSection() {
                     </h3>
                     <p className="text-xs text-gray-500">May 16, 2024</p>
                   </div>
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-full animate-pulse-lg" />
+                  <div className="w-8 h-8 bg-linear-to-br from-blue-400 to-indigo-600 rounded-full animate-pulse-lg" />
                 </div>
 
                 {/* Stats Cards */}
@@ -115,7 +115,7 @@ export default function HeroSection() {
                 </div>
 
                 {/* Action Button */}
-                <button className="w-full py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-semibold rounded-lg hover:shadow-lg transition-smooth hover:scale-105">
+                <button className="w-full py-2 bg-linear-to-r from-blue-600 to-indigo-600 text-white text-sm font-semibold rounded-lg hover:shadow-lg transition-smooth hover:scale-105">
                   View Full Dashboard →
                 </button>
               </div>

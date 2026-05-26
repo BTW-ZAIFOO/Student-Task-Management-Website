@@ -11,11 +11,11 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
 
-export default function Home() {
+export default function Page() {
   return (
     <>
       <NavbarPro />
-      <main className="pt-20">
+      <main>
         <HeroSection />
         <ProblemStatement />
         <SolutionOverview />

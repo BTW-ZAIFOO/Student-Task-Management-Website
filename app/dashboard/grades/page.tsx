@@ -72,10 +72,10 @@ export default function GradesPage() {
   };
 
   const getGradeColor = (percentage: number) => {
-    if (percentage >= 90) return { bg: 'bg-green-100 dark:bg-green-900/30', text: 'text-green-700 dark:text-green-300', bar: 'from-green-500 to-emerald-600' };
-    if (percentage >= 80) return { bg: 'bg-blue-100 dark:bg-blue-900/30', text: 'text-blue-700 dark:text-blue-300', bar: 'from-blue-500 to-indigo-600' };
-    if (percentage >= 70) return { bg: 'bg-yellow-100 dark:bg-yellow-900/30', text: 'text-yellow-700 dark:text-yellow-300', bar: 'from-yellow-500 to-orange-600' };
-    return { bg: 'bg-red-100 dark:bg-red-900/30', text: 'text-red-700 dark:text-red-300', bar: 'from-red-500 to-pink-600' };
+    if (percentage >= 90) return { bg: 'bg-green-100 bg-green-900/30', text: 'text-green-700 text-green-300', bar: 'from-green-500 to-emerald-600' };
+    if (percentage >= 80) return { bg: 'bg-blue-100 bg-blue-900/30', text: 'text-blue-700 text-blue-300', bar: 'from-blue-500 to-indigo-600' };
+    if (percentage >= 70) return { bg: 'bg-yellow-100 bg-yellow-900/30', text: 'text-yellow-700 text-yellow-300', bar: 'from-yellow-500 to-orange-600' };
+    return { bg: 'bg-red-100 bg-red-900/30', text: 'text-red-700 text-red-300', bar: 'from-red-500 to-pink-600' };
   };
 
   const getGradeLabel = (percentage: number) => {
@@ -98,35 +98,35 @@ export default function GradesPage() {
 
   return (
     <PageLayout>
-      <div className="min-h-screen bg-white dark:bg-slate-950 py-8 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+      <div className="min-h-screen bg-white bg-slate-950 py-8 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
         <div className="max-w-4xl mx-auto">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Your Grades</h1>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Track your academic performance and progress</p>
+            <h1 className="text-3xl font-bold text-gray-900 text-white">Your Grades</h1>
+            <p className="text-sm text-gray-600 text-gray-400 mt-1">Track your academic performance and progress</p>
           </div>
 
           {/* Overall Performance Card */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-md border border-gray-200 dark:border-slate-700 p-6 mb-6 transition-colors">
+          <div className="bg-white bg-slate-800 rounded-2xl shadow-md border border-gray-200 border-slate-700 p-6 mb-6 transition-colors">
             <div className="flex items-center gap-6">
-              <div className="p-4 bg-blue-100 dark:bg-blue-900/30 rounded-xl">
-                <IoBarChart className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+              <div className="p-4 bg-blue-100 bg-blue-900/30 rounded-xl">
+                <IoBarChart className="w-8 h-8 text-blue-600 text-blue-400" />
               </div>
               <div className="flex-1">
-                <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">Overall Average</p>
-                <p className="text-4xl font-bold text-gray-900 dark:text-white">{getAverageGrade()}%</p>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">GPA: {gpa.toFixed(2)} / 4.0</p>
+                <p className="text-sm text-gray-600 text-gray-400 font-medium">Overall Average</p>
+                <p className="text-4xl font-bold text-gray-900 text-white">{getAverageGrade()}%</p>
+                <p className="text-xs text-gray-600 text-gray-400 mt-1">GPA: {gpa.toFixed(2)} / 4.0</p>
               </div>
               <div className="text-right">
-                <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">Grade</p>
-                <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">{getGradeLabel(getAverageGrade())}</p>
+                <p className="text-xs text-gray-600 text-gray-400 mb-1">Grade</p>
+                <p className="text-2xl font-bold text-blue-600 text-blue-400">{getGradeLabel(getAverageGrade())}</p>
               </div>
             </div>
           </div>
 
           {/* Subject Wise Grades */}
           {subjectGrades.length > 0 && (
-            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-md border border-gray-200 dark:border-slate-700 p-6 mb-6 transition-colors">
-              <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Subject Average</h2>
+            <div className="bg-white bg-slate-800 rounded-2xl shadow-md border border-gray-200 border-slate-700 p-6 mb-6 transition-colors">
+              <h2 className="text-lg font-bold text-gray-900 text-white mb-4">Subject Average</h2>
               <div className="grid md:grid-cols-2 gap-4">
                 {subjectGrades.map((sg) => {
                   const colors = getGradeColor(sg.average);
@@ -143,7 +143,7 @@ export default function GradesPage() {
                       </div>
                       <div className="flex items-end gap-2">
                         <div className="flex-1">
-                          <div className="w-full bg-gray-300 dark:bg-slate-700 rounded-full h-2">
+                          <div className="w-full bg-gray-300 bg-slate-700 rounded-full h-2">
                             <div
                               className={`h-2 rounded-full bg-linear-to-r ${colors.bar} transition-all`}
                               style={{ width: `${sg.average}%` }}
@@ -163,7 +163,7 @@ export default function GradesPage() {
           <div className="mb-6 flex justify-end">
             <button
               onClick={() => setShowAddForm(!showAddForm)}
-              className="px-4 py-2 bg-indigo-600 dark:bg-indigo-700 hover:bg-indigo-700 dark:hover:bg-indigo-800 text-white rounded-lg flex items-center gap-2 text-sm font-medium transition-colors"
+              className="px-4 py-2 bg-indigo-600 bg-indigo-700 hover:bg-indigo-700 hover:bg-indigo-800 text-white rounded-lg flex items-center gap-2 text-sm font-medium transition-colors"
             >
               <IoAdd className="w-4 h-4" />
               Add Grade
@@ -171,22 +171,22 @@ export default function GradesPage() {
           </div>
 
           {showAddForm && (
-            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-md border border-gray-200 dark:border-slate-700 p-6 mb-6 transition-colors">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Add Assessment Record</h3>
+            <div className="bg-white bg-slate-800 rounded-2xl shadow-md border border-gray-200 border-slate-700 p-6 mb-6 transition-colors">
+              <h3 className="text-lg font-bold text-gray-900 text-white mb-4">Add Assessment Record</h3>
               <div className="space-y-4">
                 <input
                   type="text"
                   placeholder="Subject name"
                   value={newGrade.subject}
                   onChange={(e) => setNewGrade({ ...newGrade, subject: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                  className="w-full px-4 py-2 border border-gray-300 border-slate-600 rounded-lg bg-white bg-slate-900 text-gray-900 text-white placeholder-gray-500 placeholder-gray-400"
                 />
                 <input
                   type="text"
                   placeholder="Assignment/Test name"
                   value={newGrade.assignment}
                   onChange={(e) => setNewGrade({ ...newGrade, assignment: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                  className="w-full px-4 py-2 border border-gray-300 border-slate-600 rounded-lg bg-white bg-slate-900 text-gray-900 text-white placeholder-gray-500 placeholder-gray-400"
                 />
                 <div className="grid grid-cols-2 gap-4">
                   <input
@@ -194,14 +194,14 @@ export default function GradesPage() {
                     placeholder="Marks obtained"
                     value={newGrade.marks}
                     onChange={(e) => setNewGrade({ ...newGrade, marks: e.target.value })}
-                    className="px-4 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                    className="px-4 py-2 border border-gray-300 border-slate-600 rounded-lg bg-white bg-slate-900 text-gray-900 text-white placeholder-gray-500 placeholder-gray-400"
                   />
                   <input
                     type="number"
                     placeholder="Total marks"
                     value={newGrade.maxMarks}
                     onChange={(e) => setNewGrade({ ...newGrade, maxMarks: e.target.value })}
-                    className="px-4 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                    className="px-4 py-2 border border-gray-300 border-slate-600 rounded-lg bg-white bg-slate-900 text-gray-900 text-white placeholder-gray-500 placeholder-gray-400"
                   />
                 </div>
                 <div className="flex gap-3">
@@ -213,7 +213,7 @@ export default function GradesPage() {
                   </button>
                   <button
                     onClick={() => setShowAddForm(false)}
-                    className="flex-1 px-4 py-2 bg-gray-300 dark:bg-slate-700 hover:bg-gray-400 dark:hover:bg-slate-600 text-gray-900 dark:text-white rounded-lg font-medium transition-colors"
+                    className="flex-1 px-4 py-2 bg-gray-300 bg-slate-700 hover:bg-gray-400 hover:bg-slate-600 text-gray-900 text-white rounded-lg font-medium transition-colors"
                   >
                     Cancel
                   </button>
@@ -223,11 +223,11 @@ export default function GradesPage() {
           )}
 
           {/* All Grades */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-md border border-gray-200 dark:border-slate-700 p-6 transition-colors">
-            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4">All Assessments</h2>
+          <div className="bg-white bg-slate-800 rounded-2xl shadow-md border border-gray-200 border-slate-700 p-6 transition-colors">
+            <h2 className="text-lg font-bold text-gray-900 text-white mb-4">All Assessments</h2>
             <div className="space-y-2">
               {grades.length === 0 ? (
-                <p className="text-sm text-gray-500 dark:text-gray-400 text-center py-8">No grades recorded yet. Add one to get started!</p>
+                <p className="text-sm text-gray-500 text-gray-400 text-center py-8">No grades recorded yet. Add one to get started!</p>
               ) : (
                 [...grades].reverse().map((grade) => {
                   const percentage = getPercentage(grade.marks, grade.maxMarks);
@@ -237,7 +237,7 @@ export default function GradesPage() {
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className={`text-sm font-semibold ${colors.text}`}>{grade.subject}</p>
-                          <p className="text-xs text-gray-600 dark:text-gray-400 mt-0.5">{grade.assignment}</p>
+                          <p className="text-xs text-gray-600 text-gray-400 mt-0.5">{grade.assignment}</p>
                         </div>
                         <div className="flex items-center gap-2">
                           <span className={`px-3 py-1 rounded-full font-bold text-xs ${colors.text}`}>
@@ -245,7 +245,7 @@ export default function GradesPage() {
                           </span>
                           <button
                             onClick={() => deleteGrade(grade.id)}
-                            className="p-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                            className="p-2 text-red-600 text-red-400 hover:bg-red-50 hover:bg-red-900/20 rounded-lg transition-colors"
                           >
                             <IoTrash className="w-4 h-4" />
                           </button>
@@ -253,7 +253,7 @@ export default function GradesPage() {
                       </div>
                       <div className="flex items-center gap-3">
                         <div className="flex-1">
-                          <div className="w-full bg-gray-300 dark:bg-slate-700 rounded-full h-2">
+                          <div className="w-full bg-gray-300 bg-slate-700 rounded-full h-2">
                             <div
                               className={`h-2 rounded-full bg-linear-to-r ${colors.bar} transition-all`}
                               style={{ width: `${percentage}%` }}

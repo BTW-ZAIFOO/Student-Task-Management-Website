@@ -1,7 +1,7 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IAttendance extends Document {
-  _id: string;
+  _id: mongoose.Types.ObjectId;
   studentId: string;
   date: string;
   subject: string;
@@ -22,7 +22,7 @@ const attendanceSchema = new Schema(
 export const Attendance = mongoose.models.Attendance || mongoose.model<IAttendance>('Attendance', attendanceSchema);
 
 export interface IGrade extends Document {
-  _id: string;
+  _id: mongoose.Types.ObjectId;
   studentId: string;
   subject: string;
   assignment: string;
@@ -45,7 +45,7 @@ const gradeSchema = new Schema(
 export const Grade = mongoose.models.Grade || mongoose.model<IGrade>('Grade', gradeSchema);
 
 export interface INote extends Document {
-  _id: string;
+  _id: mongoose.Types.ObjectId;
   studentId: string;
   subject: string;
   title: string;

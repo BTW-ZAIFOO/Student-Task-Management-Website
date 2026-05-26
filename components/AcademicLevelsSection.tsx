@@ -1,6 +1,7 @@
 'use client';
 
 import AcademicLevelCard from './AcademicLevelCard';
+import SectionContainer from './SectionContainer';
 import SectionHeader from './SectionHeader';
 import {
   IoPerson,
@@ -46,8 +47,7 @@ export default function AcademicLevelsSection() {
 ];
 
   return (
-    <section id="levels" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-blue-50/30">
-      <div className="max-w-6xl mx-auto">
+    <SectionContainer id="levels">
         <SectionHeader
           title="Built for Every Academic Level"
           subtitle="From primary school to doctoral research, StudentSphere adapts to your journey"
@@ -64,7 +64,6 @@ export default function AcademicLevelsSection() {
             />
           ))}
         </div>
-      </div>
-    </section>
+    </SectionContainer>
   );
 }

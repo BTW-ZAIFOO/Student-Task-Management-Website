@@ -41,10 +41,10 @@ export default function NavbarPro() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-linear-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">S</span>
             </div>
-            <span className="text-lg font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent hidden sm:inline">
+            <span className="text-lg font-bold bg-linear-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent hidden sm:inline">
               StudentSphere
             </span>
           </Link>
@@ -118,7 +118,7 @@ export default function NavbarPro() {
             </Link>
             <Link
               href="/signup"
-              className="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-medium rounded-lg hover:shadow-lg transition-smooth"
+              className="px-4 py-2 bg-linear-to-r from-blue-600 to-indigo-600 text-white text-sm font-medium rounded-lg hover:shadow-lg transition-smooth"
             >
               Get Started
             </Link>
@@ -156,7 +156,7 @@ export default function NavbarPro() {
                 </Link>
                 <Link
                   href="/signup"
-                  className="px-4 py-2 text-sm text-center font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg hover:shadow-lg"
+                  className="px-4 py-2 text-sm text-center font-medium text-white bg-linear-to-r from-blue-600 to-indigo-600 rounded-lg hover:shadow-lg"
                 >
                   Get Started
                 </Link>

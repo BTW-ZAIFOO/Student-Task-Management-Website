@@ -4,10 +4,11 @@ import Task from '@/models/Task';
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
+    const params = await context.params;
     const { id } = params;
     const updates = await request.json();
 
@@ -24,10 +25,11 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
+    const params = await context.params;
     const { id } = params;
 
     const deletedTask = await Task.findByIdAndDelete(id);
